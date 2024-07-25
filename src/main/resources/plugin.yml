@@ -1,0 +1,36 @@
+name: ${project.pluginName}
+version: ${project.version}
+description: ${project.description}
+author: Leialoha
+website: https://leialoha.dev
+
+main: dev.leialoha.plugins.figuraserver.FiguraServer
+prefix: ${project.name}
+api-version: '1.20'
+load: STARTUP
+
+libraries:
+- org.nanohttpd:nanohttpd:2.3.1
+- org.nanohttpd:nanohttpd-websocket:2.3.1
+- org.shredzone.acme4j:acme4j-client:3.3.1
+- org.apache.commons:commons-io:1.3.2
+- com.google.code.gson:gson:2.11.0
+
+
+permissions:
+  permission.${project.name}.admin:
+    description: "Admin permissions for ${project.name}"
+    default: op
+    children:
+      permission.${project.name}.figuraw: true
+  permission.${project.name}.figuraw:
+    description: "Permissions for manipulating the ${project.name}"
+    default: not op
+
+commands:
+  figuraw:
+    description: "The base command for manipulating the ${project.name}"
+    usage: "/figuraw <arg>"
+    aliases: [figuraweb, figuraw, figurahttp, figurahttps]
+    permission: permission.${project.name}.figuraw
+    permission-message: "You do not have permission to use this command"

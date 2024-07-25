@@ -1,0 +1,7 @@
+
+# Build files
+target/
+libs/
+
+# Server run files
+run/

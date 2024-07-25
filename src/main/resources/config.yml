@@ -1,0 +1,86 @@
+
+figura:
+  # Check for Figura updates to notify the user when a new update is available.
+  check-for-updates: true
+
+  # Interval for running Figura update checks.
+  # Use time conventions such as 1Y (1 Year), 1M (1 Month), 1W (1 Week), 1D (1 Day), 1h (1 hour), 1m (1 minute), 1s (1 second).
+  # Example: 2W5h means 2 weeks and 5 hours.
+  update-interval: 1h
+
+  permissions:
+    # Figura has 5 different permission levels, which determine the permissions for loading avatars.
+    # Each level has a default set of permissions:
+    # Blocked (0) - Little to no avatar permissions.
+    # Low (1) - Limited permissions.
+    # Default (2) - Standard permissions.
+    # High (3) - Elevated permissions.
+    # Max (4) - Most permissions enabled.
+    #
+    # Setting the default level above 2 is not recommended and may be unsafe.
+    default-level: 2
+
+    # The permission level for server operators.
+    # This value must be higher than the default-level to take effect.
+    op-level: 3
+
+  avatars:
+    # Remove a player's avatar when they get banned from the server.
+    remove-when-banned: true
+
+    # Remove a player's avatar if it hasn't been used for a specified amount of time.
+    remove-when-inactive: true
+
+    # The amount of time until an avatar is marked inactive.
+    # Use time conventions such as 1Y (1 Year), 1M (1 Month), 1W (1 Week), 1D (1 Day), 1h (1 hour), 1m (1 minute), 1s (1 second).
+    # Example: 2W5h means 2 weeks and 5 hours.
+    inactive-timer: 2W
+
+    # List of UUIDs for avatars that should never be deleted, regardless of inactivity or bans.
+    ignore-avatars:
+      - 00000000-0000-0000-0000-000000000000
+      - 12f3aa8e-26f8-4960-9298-f588337370d1
+
+server:
+  # Hostname to use for the server.
+  # This is usually the IP address where the server is hosted.
+  # Comment out this line if you are getting unexpected issues or no server replies.
+  host: 127.0.0.1
+
+  # Port to use for the server. Default is 443, which is commonly used for HTTPS.
+  #
+  # NOTE: Figura does not take into account the port setting.
+  # Some issues might occur when connecting with Figura on a different port.
+  # Only change this if you are using some sort of proxy that requires a different port.
+  port: 443
+
+  # Enable or disable SSL encryption. 
+  # Setting this to false will disable the Web Server's secure mode.
+  # Only disable this if you plan to handle encryption using a proxy or another method.
+  #
+  # It is recommended to use SSL to ensure secure communication.
+  # Look up HTTPS/SSL Proxies if you are unsure about what to do.
+  use-ssl-encryption: true
+
+  # Enable or disable the use of keystore encryption instead of using a certificate and private key directly.
+  # Set this to true to use keystore files, which may be more convenient for some setups.
+  use-keystore-encryption: false
+
+  # Public Key Certificate configuration for SSL encryption
+  encryption:
+    # The password for your key. If not using a keystore file, this password is used to protect your certificate.
+    password: changeit
+
+    # Configuration for loading a certificate and private key directly
+    x509:
+      # The file path to the SSL certificate file.
+      certificate: "./plugins/${project.pluginName}/certificates/cert.pem"
+
+      # The file path to the SSL private key file.
+      private-key: "./plugins/${project.pluginName}/certificates/privkey.pem"
+
+    # Configuration for loading a certificate from a keystore file
+    keystore:
+      # File path to the keystore file that contains the certificate.
+      # Keystores are often used for temporary storage or when handling multiple certificates.
+      file: "./plugins/${project.pluginName}/certificates/keystore.jks"

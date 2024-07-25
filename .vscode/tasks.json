@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "dependsOn": [ "Build plugin" ],
+            "type": "shell",
+            "label": "Start server",
+            "options": {
+                "cwd": "${workspaceFolder}/run"
+            },
+            "command": "c:\\Users\\Leialoha\\.dcevm\\jbr_jcef-17.0.11-windows-x64-b1207.24\\bin\\java",
+            "args": [
+                "-XX:+AllowEnhancedClassRedefinition",
+                "-XX:HotswapAgent=core",
+                "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8080",
+                "-jar", "paper-1.20.1-196.jar", "nogui"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "hide": true,
+            "type": "shell",
+            "label": "Build plugin",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "command": "mvn",
+            "args": [ "clean", "package" ],
+            "problemMatcher": []
+        },
+    ]
+}

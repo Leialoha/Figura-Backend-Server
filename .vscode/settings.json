@@ -1,0 +1,15 @@
+{
+    "java.debug.settings.hotCodeReplace": "auto",
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.jdt.ls.java.home": "c:\\Users\\Leialoha\\.dcevm\\jbr_jcef-17.0.11-windows-x64-b1207.24",
+
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-17", // replace version by 8, 11 or 17
+            "path": "c:\\Users\\Leialoha\\.dcevm\\jbr_jcef-17.0.11-windows-x64-b1207.24",
+            "default": true
+        },
+    ],
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.format.settings.url": ".vscode/java-formatter.xml",
+}
